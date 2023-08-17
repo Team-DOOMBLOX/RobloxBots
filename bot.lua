@@ -127,7 +127,7 @@ for i,plr in ipairs(game.Players:GetChildren()) do
         elseif lowerMessage == getgenv().prefix.."credits" then
             sendApiMessage("Code by CasualDev Expanded by oc9x97 Fixing by Torn, Since Torn was slow to code most of it I had to use ChatGPT!")
         elseif lowerMessage == getgenv().prefix.."cmds" then
-            sendApiMessage("credits, render, dontrender, rejoin, sit, dance, follow, unfollow, jump, reset, cmds, goto, laugh, cheer, wave, and love! ")
+            sendApiMessage("credits, render, dontrender, rejoin, sit, dance, follow, unfollow, jump, reset, cmds, laugh, cheer, wave, love, shadow, unshadow, stopaltcontrol, bring, ws, jp")
         elseif lowerMessage == getgenv().prefix.."resumealtcontrol" then
             threadlive = true
                  elseif lowerMessage == getgenv().prefix.."love" then
