@@ -1,13 +1,13 @@
-—-DON’T FUCKING SKID THIS, (unless your a member of doomblox and want to import this into your client)
+--DON’T FUCKING SKID THIS, (unless your a member of doomblox and want to import this into your client)
 --RobloxBots by Team DOOMBLOX
 --Credits: Casualdev (Main source)
 --oc9x97 (Expansion)
 --tornvrc/bakersrule2020 (Hey, that's me!) (Patches and recent additions)
 --You (For using this script <3)
-getgenv().host = "nowggtesterfortaylor"
-getgenv().allowallcontrol = true --Allows the entire server to control the bot. Recommended to keep false for testing.
+getgenv().host = "Username"
+getgenv().allowallcontrol = false --Allows the entire server to control the bot. Recommended to keep false for testing.
 getgenv().defaultfps = 60
-getgenv().prefix = "!"
+getgenv().prefix = "!" --Change prefix for bot, can even be nothing if you like.
 local shadowing = false
 local event
 getgenv().shouldbotrender = true -- To show bot's screen or not to reduce lag
@@ -178,8 +178,6 @@ game.Players[host].Chatted:Connect(function(message)
             end
         elseif lowerMessage == getgenv().prefix.."unfollow" then
             following = false
-             elseif lowerMessage == getgenv().prefix.."love" then
-            	sendApiMessage("Love? I only save that for CasualDev.")
         elseif lowerMessage == getgenv().prefix.."chatluaver" then
             sendApiMessage("Lua version is reported to be: " .. _VERSION)
         elseif lowerMessage == getgenv().prefix.."goto" then
@@ -248,13 +246,13 @@ game.Players[host].Chatted:Connect(function(message)
         elseif lowerMessage == getgenv().prefix.."whoami" then
             sendApiMessage("I'm Torn, taken by CasualDev maybe????")
         elseif lowerMessage == getgenv().prefix.."credits" then
-            sendApiMessage("Code by CasualDev Expanded by oc9x97 Fixing by Torn, Since Torn was slow to code most of it I had to use ChatGPT!")
+            sendApiMessage("Code by CasualDev Expanded by oc9x97 Fixing by Torn.")
         elseif lowerMessage == getgenv().prefix.."cmds" then
-            sendApiMessage("credits, render, dontrender, rejoin, sit, dance, follow, unfollow, jump, reset, cmds, laugh, cheer, wave, love, shadow, unshadow, stopaltcontrol, bring, ws, jp")
+            sendApiMessage("credits, render, dontrender, rejoin, sit, dance, follow, unfollow, jump, reset, cmds, laugh, cheer, wave, shadow, unshadow, stopaltcontrol, bring, ws, jp")
         elseif lowerMessage == getgenv().prefix.."stopaltcontrol" then
             threadlive = false
             event:Disconnect()
-            sendApiMessage("Stopped alt control. Made by team DOOMBLOX!")
+            sendApiMessage("Stopped alt control.")
         elseif lowerMessage == getgenv().prefix.."resumealtcontrol" then
             threadlive = true
        
