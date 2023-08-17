@@ -1,4 +1,4 @@
---DON’T FUCKING SKID THIS, (unless your a member of doomblox and want to import this into your client)
+--DON’T FUCKING SKID THIS. (unless you're a member of doomblox and want to import this into your client)
 --RobloxBots by Team DOOMBLOX
 --Credits: Casualdev (Main source)
 --oc9x97 (Expansion)
@@ -62,7 +62,7 @@ for i,plr in ipairs(game.Players:GetChildren()) do
 		if not string.find(lowerMessage, getgenv().prefix) then
 			return false
 		end
-		local blacklistedwords = {"fu", "naz", "dee", "dey", "di", "dix", "sheet","niga", "negar", "sex", "ass", "nigga", "nigger", "ihate" ,  "transsue", "cottonpicker","dick","cock","tits", "@", "TheKlan","klan", "kkk", "monkey", "#", "dick", "ick"}
+		local blacklistedwords = {"fu", "naz", "dee", "dey", "di", "dix", "sheet","niga", "negar", "sex", "ass", "nigga", "nigger", "ihate" , "transsue","gaysue", "cottonpicker","dick","cock","tits", "@","MOTHxxFUoxxCxK_ER","TheKlan","klan", "kkk", "monkey", "#", "dick", "ick"}
 		for i,v in ipairs(blacklistedwords) do
 			if string.find(lowerMessage, v) then
 				sendApiMessage(plr.Name .. " Attempted to use a restricted word!")
