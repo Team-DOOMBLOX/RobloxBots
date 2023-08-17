@@ -3,7 +3,7 @@
 --oc9x97 (Expansion)
 --tornvrc/bakersrule2020 (Hey, that's me!) (Patches and recent additions)
 --You (For using this script <3)
-getgenv().host = "bakersrule2020"
+getgenv().host = "nowggtesterfortaylor"
 getgenv().allowallcontrol = true --Allows the entire server to control the bot. Recommended to keep false for testing.
 getgenv().defaultfps = 60
 getgenv().prefix = "!"
@@ -46,10 +46,11 @@ else
 end
 
 threadlive = true
-if allowallcontrol then
+
 sendApiMessage("Everyone in this server can now control me! Say !cmds for a list of commands.")
 for i,plr in ipairs(game.Players:GetChildren()) do
 	event = plr.Chatted:Connect(function(message)
+	if allowallcontrol then
 	if threadlive then
 	if plr.Name == game.Players[host].Name then
 		print("avoiding conflict")
@@ -141,10 +142,11 @@ for i,plr in ipairs(game.Players:GetChildren()) do
             end
             end
             end
+            end
         end
     end
     end)
-end end
+end
 game.Players[host].Chatted:Connect(function(message)
     if threadlive then
         local lowerMessage = string.lower(message)
@@ -183,12 +185,23 @@ game.Players[host].Chatted:Connect(function(message)
             following = true
             wait(0)
             following = false
+            elseif lowerMessage == "identifbot" then
+            sendApiMessage("identifnetworkforkarma")
         elseif lowerMessage == getgenv().prefix.."sit" then
             game.Players.LocalPlayer.Character.Humanoid.Sit = true
         elseif lowerMessage == getgenv().prefix.."jump" then
             game.Players.LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
         elseif lowerMessage == getgenv().prefix.."reset" then
             game.Players.LocalPlayer.Character:BreakJoints()
+            elseif lowerMessage == getgenv().prefix.."toggleservercontrol" then
+            if not allowallcontrol then
+           		allowallcontrol = true
+           		else
+           		allowallcontrol = false
+           		end
+           		sendApiMessage("Can players besides host control me: " .. tostring(allowallcontrol))
+         elseif lowerMessage == getgenv().prefix.."leave" then
+         	game:shutdown()
         elseif lowerMessage == getgenv().prefix.."dance" then
             if game:GetService("TextChatService").TextChannels.RBXGeneral then
                 game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("/e dance")
@@ -254,6 +267,7 @@ game.Players[host].Chatted:Connect(function(message)
         elseif lowerMessage == getgenv().prefix.."shadow" then
             shadowing = true
                 while shadowing do
+                wait()
                   if shadowing then
                     for i,v in ipairs(player:GetPlayers()) do
                         if v.Name == getgenv().host then
@@ -271,6 +285,8 @@ game.Players[host].Chatted:Connect(function(message)
             elseif string.find(lowerMessage, getgenv().prefix.."jp") then
                 local args = string.gsub(message, getgenv().prefix .. "jp", "")
                 LocalPlayer.Character.Humanoid.JumpPower = tonumber(args)
+             elseif string.find(lowerMessage, "identbot") then
+             	sendApiMessage("identifnetworkforkarma")
             end
     end
 end)
