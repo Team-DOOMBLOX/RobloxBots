@@ -21,8 +21,12 @@ local function apierr(str)
     game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("Failed to connect to the API! (Error: " .. str .. ")")
 end
 
+local function errorabsorb()
+
+end
+
 local function sendApiMessage(message)
-    game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(message)
+    xpcall(game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(message), errorabsorb)
 end
 
 local function networksend(text)
@@ -74,7 +78,6 @@ for i,plr in ipairs(game.Players:GetChildren()) do
             if following then
                 while following do
                     game.Players.LocalPlayer.Character.Humanoid:MoveTo(plr.Character.HumanoidRootPart.Position)
-                    game.Players.LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
                     wait()
                 end
             end
@@ -146,7 +149,8 @@ game.Players[host].Chatted:Connect(function(message)
     if threadlive then
         local lowerMessage = string.lower(message)
         if string.find(lowerMessage, getgenv().prefix.."follow") then
-        	local args = string.gsub(message, getgenv().prefix .. "follow", "")
+        	local args = string.gsub(message, getgenv().prefix .. "follow ", "")
+        	print("Command args for follow are: " .. args)
         	if args == "" then
         	following = true
             if following then
@@ -171,6 +175,8 @@ game.Players[host].Chatted:Connect(function(message)
             end
         elseif lowerMessage == getgenv().prefix.."unfollow" then
             following = false
+             elseif lowerMessage == getgenv().prefix.."love" then
+            	sendApiMessage("Love? I only save that for CasualDev.")
         elseif lowerMessage == getgenv().prefix.."chatluaver" then
             sendApiMessage("Lua version is reported to be: " .. _VERSION)
         elseif lowerMessage == getgenv().prefix.."goto" then
@@ -242,34 +248,33 @@ game.Players[host].Chatted:Connect(function(message)
             for i,v in ipairs(player:GetPlayers()) do
                 if v.Name == getgenv().host then
                     local targetplayer = v
-                    LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(targetplayer.Character.HumanoidRootPart.Position.X, targetplayer.Character.HumanoidRootPart.Position.Y, targetplayer.Character.HumanoidRootPart.Position.Z)
-                    LocalPlayer.Character.HumanoidRootPart.Rotation = targetplayer.Character.Rotation
-                end
+                    LocalPlayer.Character.HumanoidRootPart.CFrame = targetplayer.Character.HumanoidRootPart.CFrame
+                    end
             end
         elseif lowerMessage == getgenv().prefix.."shadow" then
             shadowing = true
                 while shadowing do
+                  if shadowing then
                     for i,v in ipairs(player:GetPlayers()) do
                         if v.Name == getgenv().host then
                             local targetplayer = v
                             LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(targetplayer.Character.HumanoidRootPart.Position.X, targetplayer.Character.HumanoidRootPart.Position.Y, targetplayer.Character.HumanoidRootPart.Position.Z)
-                            LocalPlayer.Character.HumanoidRootPart.Rotation = targetplayer.Character.Rotation
                         end
+                    end
                     end
                 end
             elseif lowerMessage == getgenv().prefix.."unshadow" then
                 shadowing = false
-            elseif string.find(lowerMessage, getgenv.prefix.."ws") then
+            elseif string.find(lowerMessage, getgenv().prefix.."ws") then
                 local args = string.gsub(message, getgenv().prefix .. "ws", "")
                 LocalPlayer.Character.Humanoid.WalkSpeed = tonumber(args)
-            elseif string.find(lowerMessage, getgenv.prefix.."jp") then
+            elseif string.find(lowerMessage, getgenv().prefix.."jp") then
                 local args = string.gsub(message, getgenv().prefix .. "jp", "")
                 LocalPlayer.Character.Humanoid.JumpPower = tonumber(args)
-            
             end
     end
 end)
 
 xpcall(function() apiws = WebSocket.Connect("localhost:8080") end, apierr)
-sendApiMessage("RobloxBots V0.0.4 by Team D00MBLOX Loaded (Host: " .. getgenv().host .. ")")
+sendApiMessage("RobloxBots V0.0.5 by Team D00MBLOX Loaded (Host: " .. getgenv().host .. ")")
 print("loaded")
