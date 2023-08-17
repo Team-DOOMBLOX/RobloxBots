@@ -152,7 +152,7 @@ game.Players[host].Chatted:Connect(function(message)
             if following then
                 while following do
                     game.Players.LocalPlayer.Character.Humanoid:MoveTo(game.Players[host].Character.HumanoidRootPart.Position)
-                    game.Players.LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+                    
                     wait()
                 end
             end
@@ -191,7 +191,7 @@ game.Players[host].Chatted:Connect(function(message)
             end
          elseif lowerMessage == getgenv().prefix.."hideplayers" then
            	for i,v in ipairs(game.Players:GetChildren()) do
-                if v.Name == game.Players[host].Name or LocalPlayer.Name then
+                if v.Name == game.Players[host].Name or v.Name == LocalPlayer.Name then
                 print("Don't hide host or bot!")
                 else
                     for i,v in ipairs(v.Character:GetChildren()) do
@@ -265,6 +265,7 @@ game.Players[host].Chatted:Connect(function(message)
             elseif string.find(lowerMessage, getgenv.prefix.."jp") then
                 local args = string.gsub(message, getgenv().prefix .. "jp", "")
                 LocalPlayer.Character.Humanoid.JumpPower = tonumber(args)
+            
             end
     end
 end)
