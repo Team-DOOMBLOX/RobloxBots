@@ -4,7 +4,7 @@
 --oc9x97 (Expansion)
 --tornvrc/bakersrule2020 (Hey, that's me!) (Patches and recent additions)
 --You (For using this script <3)
-getgenv().host = "Username"
+getgenv().host = "Username" --CHANGE THIS TO YOUR USERNAME BEFORE YOU FUCKING COMPLAIN 
 getgenv().allowallcontrol = false --Allows the entire server to control the bot. Recommended to keep false for testing.
 getgenv().defaultfps = 60
 getgenv().prefix = "!" --Change prefix for bot, can even be nothing if you like.
