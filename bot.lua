@@ -27,7 +27,12 @@ local function errorabsorb()
 end
 
 local function sendApiMessage(message)
-    xpcall(game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(message), errorabsorb)
+    local remoteEvent = game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest")
+    local args = {
+        [1] = message,
+        [2] = "All"
+    }
+    remoteEvent:FireServer(unpack(args))
 end
 
 local function networksend(text)
