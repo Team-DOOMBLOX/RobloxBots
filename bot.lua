@@ -23,16 +23,19 @@ local function apierr(str)
 end
 
 local function errorabsorb()
-
+    warn("An error occured! Most likely just because of something we fucked up, not you.")
 end
 
 local function sendApiMessage(message)
-    local remoteEvent = game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest")
+    xpcall(function()
+        local remoteEvent = game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest")
     local args = {
         [1] = message,
         [2] = "All"
     }
     remoteEvent:FireServer(unpack(args))
+    , errorabsorb())
+
 end
 
 local function networksend(text)
@@ -128,8 +131,7 @@ for i,plr in ipairs(game.Players:GetChildren()) do
         elseif lowerMessage == getgenv().prefix.."laugh" then
             sendApiMessage("/e laugh")
             sendApiMessage("HAHAHAHAHAHA!!!")
-        elseif lowerMessage == getgenv().prefix.."whoami" then
-            sendApiMessage("I'm Torn, taken by CasualDev maybe????")
+    
         elseif lowerMessage == getgenv().prefix.."credits" then
             sendApiMessage("Code by CasualDev Expanded by oc9x97 Fixing by Torn, Since Torn was slow to code most of it I had to use ChatGPT!")
         elseif lowerMessage == getgenv().prefix.."cmds" then
@@ -137,7 +139,7 @@ for i,plr in ipairs(game.Players:GetChildren()) do
         elseif lowerMessage == getgenv().prefix.."resumealtcontrol" then
             threadlive = true
                  elseif lowerMessage == getgenv().prefix.."love" then
-            	sendApiMessage("Love? I only save that for CasualDev.")
+            	sendApiMessage("Dear sam, please go back in and change this instead of whining about it")
         elseif lowerMessage == getgenv().prefix.."bring" then
             for i,v in ipairs(player:GetPlayers()) do
                 if v.Name == plr.Name then
