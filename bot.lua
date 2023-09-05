@@ -1,5 +1,5 @@
---DON’T FUCKING SKID THIS. (unless you're a member of doomblox and want to import this into your client)
---RobloxBots by Team DOOMBLOX
+--DON’T FUCKING SKID THIS. (unless you're a member of FedSharkz and want to import this into your client)
+--RobloxBots by FedSharkz
 --Credits: Casualdev (Main source)
 --oc9x97 (Expansion)
 --tornvrc/bakersrule2020 (Hey, that's me!) (Patches and recent additions)
@@ -298,5 +298,5 @@ game.Players[host].Chatted:Connect(function(message)
 end)
 
 xpcall(function() apiws = WebSocket.Connect("localhost:8080") end, apierr)
-sendApiMessage("RobloxBots V0.0.5 by Team D00MBLOX Loaded (Host: " .. getgenv().host .. ")")
+sendApiMessage("RobloxBots V0.0.5 by FedSharkz Loaded (Host: " .. getgenv().host .. ")")
 print("loaded")
