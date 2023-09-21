@@ -56,10 +56,11 @@ end
 
 threadlive = true
 
-sendApiMessage("Everyone in this server can now control me! Say !cmds for a list of commands.")
+
 for i,plr in ipairs(game.Players:GetChildren()) do
 	event = plr.Chatted:Connect(function(message)
 	if allowallcontrol then
+		sendApiMessage("Everyone in this server can now control me! Say !cmds for a list of commands.")
 	if threadlive then
 	if plr.Name == game.Players[host].Name then
 		print("avoiding conflict")
@@ -278,7 +279,7 @@ game.Players[host].Chatted:Connect(function(message)
                     for i,v in ipairs(player:GetPlayers()) do
                         if v.Name == getgenv().host then
                             local targetplayer = v
-                            LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(targetplayer.Character.HumanoidRootPart.Position.X, targetplayer.Character.HumanoidRootPart.Position.Y, targetplayer.Character.HumanoidRootPart.Position.Z)
+                            LocalPlayer.Character.HumanoidRootPart.CFrame = targetplayer.Character.HumanoidRootPart.CFrame
                         end
                     end
                     end
