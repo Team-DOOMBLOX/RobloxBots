@@ -298,6 +298,6 @@ game.Players[host].Chatted:Connect(function(message)
     end
 end)
 
-xpcall(function() apiws = WebSocket.Connect("localhost:8080") end, apierr)
+--xpcall(function() apiws = WebSocket.Connect("localhost:8080") end, apierr)
 sendApiMessage("RobloxBots V0.0.5 by FedSharkz Loaded (Host: " .. getgenv().host .. ")")
 print("loaded")
